@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+
   <ion-header collapse="condense">
     <ion-toolbar>
 
@@ -7,14 +7,29 @@
     </ion-buttons>
 
       <ion-title>
-        Contact
+        Home
       </ion-title>
-
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <app-explore-container name="Tab 1 page"></app-explore-container>
 
+
+  <ion-title><ion-icon name="star"></ion-icon><h2>Favourites</h2></ion-title>
+  <ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let photoDetails of favList; let id = index">
+      <ion-card>
+        <img width="100%" [src]="photoDetails.url" />
+        <ion-card-header>
+          <ion-card-subtitle>{{photoDetails.author}}</ion-card-subtitle>
+          <ion-card-title>{{photoDetails.title}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-button  color="danger" (click)="delFav(id)" slot="end">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <img width="100%" [src]="photoDetails.url" />
+    <ion-card-header>
+      <ion-card-subtitle>{{photoDetails.author}}</ion-card-subtitle>
+      <ion-card-title>{{photoDetails.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{photoDetails.description}}
+    </ion-card-content>
+  </ion-card>
+  <ion-button (click)="changeText()" (click)="addFav()" [color]="btnAdded ? 'primary' : 'danger'">
+    <ion-icon slot="start" [name]="btnText == 'Add to fave' ? 'add' : 'close-outline'"></ion-icon>
+    {{btnText}}
+  </ion-button>
+  <ion-button expand="full" routerLink="/tabs/tab2">Back to gallery</ion-button>
 </ion-content>
