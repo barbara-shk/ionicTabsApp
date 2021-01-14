@@ -1,20 +1,24 @@
-<ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-  
+<ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-  
-      <ion-title>
-        Gallery
-      </ion-title>
-  
-      <ion-buttons slot="end">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
 
-  
+    <ion-title> Photos </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let img of galleryList" [routerLink]="'/details/' + img.id">
+      <ion-avatar slot="start">
+        <ion-img [src]="img.url"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{img.title}}</h2>
+        <h3>{{img.author}}</h3>
+        <p>{{img.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
